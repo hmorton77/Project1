@@ -7,3 +7,8 @@ function initMap() {
         zoom: 8,
 });
 }
+// step2.5: determining latitude and longitude from zipcode
+function lonlat() {
+    console.log("success!")
+}
+
