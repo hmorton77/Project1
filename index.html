@@ -19,6 +19,7 @@
             <!-- restaurant type (optional) -->
             <!-- restaurant name (optional) -->
             <!-- carryout/delivery? (checkboxes) -->       
+        <div class="row">    
             <form class="col-lg-9 searchForm">
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Restaurant Name (don't type spaces! See example)</label>
@@ -56,10 +57,11 @@
                 <li class="list-group-item">wind speed</li>
                 </ul>
             </div>   
-
+        </div>
         
 
         <!-- container for the map -->
+    <div class="row">    
         <div id="map"></div>
         <iframe
             class="map"
@@ -68,7 +70,7 @@
             frameborder="0" style="border:0"
             src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCxsfk5uokgV_Uu1XpzgMO3OAGaElsVqOw&q=Cleveland+OH" allowfullscreen>
         </iframe>
-
+    </div>
     </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxsfk5uokgV_Uu1XpzgMO3OAGaElsVqOw&callback=initMap" type="text/javascript"></script>
