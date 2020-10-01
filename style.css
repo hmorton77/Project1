@@ -1,7 +1,33 @@
-.searchForm {
-    font-weight: bold;
+.jumbotron {
+    border-radius: 20px 20px 20px 20px;
+    height: 200px;
+    opacity: 90%;
 }
 
+.jumbotron h1{
+    color: red;
+}
+
+.searchForm {
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+}
+.submitBtn {
+    display: flex;
+    margin-left: 82%;
+    text-align: center;
+}
+.submitBtn:hover{
+    display: flex;
+    margin-left: 82%;
+    text-align: center;
+    background-color: grey;
+}
+.weatherForm {
+    border-radius: 20px 20px 20px 20px;
+    margin-left: -.9em;
+}
 .map {
     border-radius: 20px 20px 20px 20px;
     margin: .25em;
@@ -22,7 +48,7 @@
     font-size: 40px;
 }
 body {
-    background-image: url("images/lukas-blazek-f-TWhXOrLiU-unsplash.jpg");
+    background-image: url("images/bruna-branco-7r1HxvVC7AY-unsplash.jpg");
     height: auto; 
     background-position: center;
     background-repeat: no-repeat;

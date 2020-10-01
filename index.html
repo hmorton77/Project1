@@ -13,8 +13,8 @@
         <div class="container-fluid"> 
             <div class="jumbotron jumbotron-fluid">
                 <div class="container">
-                  <h1 class="display-4">Fluid jumbotron</h1>
-                  <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+                  <h1 class="display-4">Where to get food tonight?</h1>
+                  <p class="lead">This application will search for food in your area!</p>
                 </div>
               </div>
                 <!-- form from bootstrap to help with -->
@@ -23,33 +23,35 @@
                 <!-- restaurant name (optional) -->
                 <!-- carryout/delivery? (checkboxes) -->       
             <div class="row">    
-                <form class="col-md-8 searchForm">
+                <form class="col-sm-3 searchForm">
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Restaurant Name (don't type spaces! See example)</label>
+                        <label for="exampleFormControlInput1"><mark>Restaurant Name (don't type spaces! See example)</mark></label>
                         <input type="Name" class="form-control" id="restaurantName" placeholder="Olivegarden">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">Restaurant Type (don't type spaces! See example)</label>
+                        <label for="exampleFormControlInput1"><mark>Restaurant Type (don't type spaces! See example)</mark></label>
                         <input type="Cuisine" class="form-control" id="cuisine" placeholder="Italian">
                     </div>
                     <div class="form-group">
-                        <label for="exampleFormControlInput1">zipcode/area you are looking for</label>
+                        <label for="exampleFormControlInput1"><mark>zipcode/area you are looking for</mark></label>
                         <input type="zipcode" class="form-control" id="exampleFormControlInput1 zipcode" placeholder="44129">
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
                         <label class="form-check-label" for="defaultCheck1">
-                        Carryout
+                        <mark>Carryout</mark>
                         </label>
                     </div>
-                    <!-- which button works? -->
+                    
                     <input class="btn btn-primary submitBtn" type="submit" value="Submit">
                 </form>
                 <!-- card for the weather api -->
                 <!-- current temperature -->
                 <!-- current rain/snow? -->
                 <!-- windy? -->
-                <div class="card col-sm-3 weatherForm" style="width: 18rem;">
+                <!-- please don't judge us for the empty div -->
+                <div class="col-md-6"></div>
+                <div class="card col-sm-3 weatherForm">
                     <div class="card-header">
                     Weather
                     </div>
