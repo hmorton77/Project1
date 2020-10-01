@@ -15,7 +15,10 @@ var cuisine = document.getElementById("#cuisine"); //user inputs here
 
 var queryURL = "https://developers.zomato.com/api/v2.1/search?q=" + restaurantName +
  "&count=15&lat=" + lat +"&lon=" + lon +"&radius=24140.2&cuisine=" + cuisine + "api_key"
-
+//event.preventDefault to avoid refreshing the page on submit 
+$("#submitButton").on("click", function(){
+event.preventDefault();
+});
 
 
 $.ajax({
