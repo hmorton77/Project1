@@ -1,13 +1,13 @@
 
 // step 2: Google Maps API
-let map;
+// let map;
 
-function initMap() {
-    map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: -34.397, lng: 150.644 },
-        zoom: 8,
-});
-}
+// function initMap() {
+//     map = new google.maps.Map(document.getElementById("map"), {
+//         center: { lat: -34.397, lng: 150.644 },
+//         zoom: 8,
+// });
+// }
 // step2.5: determining latitude and longitude from zipcode
 
 var zipcode = 44101
@@ -19,8 +19,11 @@ $.ajax({
     })
     
     .then(function(response) {
-        console.log(response.results[0].formatted_address);
-        console.log(response.results[0].geometry.location.lat);
-        console.log(response.results[0].geometry.location.lng);
+        var formattedAddress = response.results[0].formatted_address;
+        var lat = response.results[0].geometry.location.lat;
+        var lon = response.results[0].geometry.location.lng;
+        console.log(formattedAddress);
+        console.log(lat);
+        console.log(lon);
     });
 
