@@ -6,8 +6,11 @@
 
 .jumbotron h1{
     color: red;
+    text-align: center;
 }
-
+.jumbotron p{
+    text-align: center;
+}
 .searchForm {
     font-weight: bold;
     display: flex;
@@ -27,6 +30,9 @@
 .weatherForm {
     border-radius: 20px 20px 20px 20px;
     margin-left: -.9em;
+}
+.weatherForm h1{
+    text-align: center;
 }
 .map {
     border-radius: 20px 20px 20px 20px;

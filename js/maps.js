@@ -25,5 +25,8 @@ $.ajax({
         console.log(formattedAddress);
         console.log(lat);
         console.log(lon);
+        
+        
+
     });
 

@@ -6,14 +6,14 @@
         <!-- bootstrap CSS -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="./style.css">
-        <!-- jquery JS -->
+       
         
     </head>
     <body>
         <div class="container-fluid"> 
             <div class="jumbotron jumbotron-fluid">
                 <div class="container">
-                  <h1 class="display-4">Where to get food tonight?</h1>
+                  <h1 class="display-4">Fine-ding Dining</h1>
                   <p class="lead">This application will search for food in your area!</p>
                 </div>
               </div>
@@ -34,10 +34,10 @@
                     </div>
                     <div class="form-group">
                         <label for="exampleFormControlInput1"><mark>zipcode/area you are looking for</mark></label>
-                        <input type="zipcode" class="form-control" id="exampleFormControlInput1 zipcode" placeholder="44129">
+                        <input type="zipcode" class="form-control" id="zipcode" placeholder="44129">
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <input class="form-check-input" type="checkbox" value="" id="carryout">
                         <label class="form-check-label" for="defaultCheck1">
                         <mark>Carryout</mark>
                         </label>
@@ -52,13 +52,16 @@
                 <!-- please don't judge us for the empty div -->
                 <div class="col-md-6"></div>
                 <div class="card col-sm-3 weatherForm">
-                    <div class="card-header">
+                    <div class="card-header city">
                     Weather
                     </div>
                     <ul class="list-group list-group-flush">
-                    <li class="list-group-item">temperature</li>
-                    <li class="list-group-item">Chance of rain</li>
-                    <li class="list-group-item">wind speed</li>
+                    <li class="list-group-item tempF">temperature</li>
+                    <li class="list-group-item feelsLike">temperature feels like </li>
+                    <li class="list-group-item description">description</li>
+                    <li class="list-group-item wind">wind speed</li>
+                    
+                    
                     </ul>
                 </div>   
             </div>
