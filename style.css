@@ -11,6 +11,13 @@
 .jumbotron p{
     text-align: center;
 }
+.logo {
+    height: 5em; 
+    width: 5em;
+    margin-top: -10em;
+    margin-left: 72em;
+    opacity: 80%;
+}
 .searchForm {
     font-weight: bold;
     display: flex;
