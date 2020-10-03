@@ -1,13 +1,4 @@
-// step 1: Zomato API 
-cities = 
-id = 1033
-// currency = "$"
-var lat = 41.4993 //will be generated via function through google maps API
-var lon = -81.6944 //will be generated via function through google maps API
 
-var queryURL = "https://developers.zomato.com/api/v2.1/search?q=" + restaurantName +
- "&count=15&lat=" + lat +"&lon=" + lon +"&radius=24140.2&cuisine=" + cuisine + "api_key"
-//event.preventDefault to avoid refreshing the page on submit 
 $(".submitBtn").on("click", function(event){
     event.preventDefault();
     var restaurantName = document.getElementById("restaurantName").value;
@@ -19,13 +10,22 @@ $(".submitBtn").on("click", function(event){
     console.log(cuisine);
     console.log(zipcode);
     console.log(carryout);
+    
+    // if (restaurantName == true);
+        localStorage.setItem("name", restaurantName);
+    // if (cuisine == true);
+        localStorage.setItem("cuisine", cuisine);
+    // if (zipcode == true);
+        localStorage.setItem("zipcode", zipcode);
+    // if (carryout == true);
+        localStorage.setItem("carryout", carryout);
+    location.reload();
 });
 
+// step 1: Zomato API 
 
-$.ajax({
-    url: queryURL,
-    method: "GET",
-    headers: {'user-key': "19a26be38c8982385cd3ead26085c343"}
-}).then(function(response){
-    console.log(response);
-});
+// currency = "$"
+// var lat = 41.4993 //will be generated via function through google maps API
+// var lon = -81.6944 //will be generated via function through google maps API
+
+

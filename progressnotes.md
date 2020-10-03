@@ -3,9 +3,7 @@
 09302020: 
 <TO DO> 
 figure out functions for restaurant variables, 
-function to link each api, 
-submit button, 
-rename all of the classes/id's in our bootstrap stuff,
+f
 visuals
 sequence ajax calls
 fonts?
