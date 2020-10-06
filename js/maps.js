@@ -4,10 +4,10 @@
 // pulls zipcode from localstorage
 var zipcode = localStorage.getItem("zipcode").trim();
 
-var queryURL = "https://maps.googleapis.com/maps/api/geocode/json?address=" + zipcode + "&key=AIzaSyCxsfk5uokgV_Uu1XpzgMO3OAGaElsVqOw"
+var queryURL1 = "https://maps.googleapis.com/maps/api/geocode/json?address=" + zipcode + "&key=AIzaSyCxsfk5uokgV_Uu1XpzgMO3OAGaElsVqOw"
 
 $.ajax({
-    url: queryURL,
+    url: queryURL1,
     method: "GET"
     })
     
@@ -16,39 +16,63 @@ $.ajax({
         var lat = response.results[0].geometry.location.lat;
         var lon = response.results[0].geometry.location.lng;
         console.log(formattedAddress);
+        
         console.log(lat);
         console.log(lon);
         
-        var restaurantName = localStorage.getItem(restaurantName);
-        var cuisine = localStorage.getItem(cuisine);
-        var queryURL = "https://developers.zomato.com/api/v2.1/search?q=" + restaurantName +
-        "&count=15&lat=" + lat +"&lon=" + lon +"&radius=24140.2&cuisine=" + cuisine + "api_key"
+        var restaurantName = localStorage.getItem("restaurantName");
+        var cuisine = localStorage.getItem("cuisine");
+        var carryout = localStorage.getItem("carryout");
+        var queryURL2 = "https://developers.zomato.com/api/v2.1/search?q=" + restaurantName + "&count=15&lat=" + lat + "&lon=" + lon + "&radius=24140.2&cuisine=" + cuisine + "&category=takeaway";
+        if ((restaurantName == true) || (cuisine == true)) {
+            var queryURL2 = "https://developers.zomato.com/api/v2.1/search?q=" + restaurantName + "&count=15&lat=" + lat + "&lon=" + lon + "&radius=24140.2&cuisine=" + cuisine;
+        } else if ((restaurantName == true) || (cuisine ==false)) {
+            var queryURL2 = "https://developers.zomato.com/api/v2.1/search?q=" + restaurantName + "&count=15&lat=" + lat + "&lon=" + lon +"&radius=24140.2";
+        } else if ((restaurantName == false) || (cuisine == true)) {
+            var queryURL2 = "https://developers.zomato.com/api/v2.1/search?count=15&lat=" + lat + "&lon=" + lon +"&radius=24140.2&cuisine=" + cuisine;
+        }
+        console.log(queryURL2);
+        // if ((carryout == true)) {
+        //     var queryURL = queryURL + "&category=Takeaway";
+        // }
+        
 
         // ajax call to get zomato data
         $.ajax({
-            url: queryURL,
+            url: queryURL2,
             method: "GET",
             headers: {'user-key': "19a26be38c8982385cd3ead26085c343"}
         })
             .then(function(response){
                 console.log(response);
-                 // step 3: OpenWeather API
+                var locations = [];
+
+                for (var i = 0; i < response.length; i++);
+                    var name = response.restaurants[i].restaurant.name;
+                    var latitude = response.restaurants[i].restaurant.location.latitude;
+                    var longitude = response.restaurants[i].restaurant.location.longitude;
+                    var array = [];
+                    array.push(name, latitude, longitude, parseInt(i)+1);
+                    locations.push(array);
+                    console.log(locations);
+                
+                // step 3: OpenWeather API
                 // This is our API key
                 var APIKey = "6cfffd42b643f9cd29fe45722d8c7849";
 
                 // Here we are building the URL we need to query the database
-                var queryURL = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey;
+                var queryURL3 = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey;
 
                 // Here we run our AJAX call to the OpenWeatherMap API
                 $.ajax({
-                url: queryURL,
+                url: queryURL3,
                 method: "GET"
                 })
                 // We store all of the retrieved data inside of an object called "response"
                     .then(function(response) {
 
                         // Log the queryURL
-                        console.log(queryURL);
+                        console.log(queryURL3);
 
                         // Log the resulting object
                         console.log(response);
@@ -76,3 +100,4 @@ $.ajax({
             });
 
     });
+

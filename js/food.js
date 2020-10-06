@@ -12,7 +12,7 @@ $(".submitBtn").on("click", function(event){
     console.log(carryout);
     
     // if (restaurantName == true);
-        localStorage.setItem("name", restaurantName);
+        localStorage.setItem("restaurantName", restaurantName);
     // if (cuisine == true);
         localStorage.setItem("cuisine", cuisine);
     // if (zipcode == true);
