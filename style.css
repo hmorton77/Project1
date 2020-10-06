@@ -24,13 +24,11 @@
     flex-direction: column;
 }
 .submitBtn {
-    display: flex;
-    margin-left: 82%;
-    text-align: center;
+    margin: 1em;
+    width: 6em;
 }
 .submitBtn:hover{
-    display: flex;
-    margin-left: 82%;
+    margin-left: 1em;
     text-align: center;
     background-color: grey;
 }
