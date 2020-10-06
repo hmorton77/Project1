@@ -27,10 +27,15 @@
   margin: 1em;
   width: 6em;
 }
+
 .submitBtn:hover {
   margin-left: 1em;
   text-align: center;
   background-color: grey;
+}
+.resetBtn {
+  margin: 1em;
+  width: 6em;
 }
 .weatherForm {
   border-radius: 20px 20px 20px 20px;

@@ -23,6 +23,7 @@ $.ajax({
     console.log(lat);
     console.log(lon);
 
+    // dynamically generating a url string
     function URLgen() {
       var restaurantName = localStorage.getItem("restaurantName");
       var cuisine = localStorage.getItem("cuisine");
@@ -71,12 +72,22 @@ $.ajax({
           restaurantLoc.push(specific);
         }
         console.log(restaurantLoc);
+        // for each array, create a marker with the coordinates of the lat/lng values
 
-        for (var i = 0; i < restaurantLoc.length; i++) {
+        for (let i = 0; i < restaurantLoc.length; i++) {
           var pos = { lat: parseFloat(restaurantLoc[i][1]), lng: parseFloat(restaurantLoc[i][2]) };
-          new google.maps.Marker({
+          let marker = new google.maps.Marker({
             position: pos,
             map: map,
+          });
+          let windowContent = restaurantLoc[i][0] + ": " + restaurantLoc[i][1] + ", " + restaurantLoc[i][2];
+          let infoWindow = new google.maps.InfoWindow({
+            content: windowContent,
+          });
+
+          marker.addListener("click", () => {
+            console.log(marker.position.lat());
+            infoWindow.open(map, marker);
           });
         }
       })
@@ -94,28 +105,24 @@ $.ajax({
           async: false,
         })
           // We store all of the retrieved data inside of an object called "response"
-          .then(function (response) {
+          .then(function (responseWeather) {
             // Log the queryURL
             console.log(queryURL3);
 
             // Log the resulting object
-            console.log(response);
+            console.log(responseWeather);
 
             // Transfer content to HTML
-            $(".city").html("<h1>" + response.name + " Weather Details &#127777;</h1>");
-            $(".wind").text("Wind Speed (m/s): " + response.wind.speed);
-            $(".description").text("Weather description: " + response.weather[0].description);
-            //  maybe icon?
+            $(".city").html("<h1>" + responseWeather.name + " Weather Details &#127777;</h1>");
+            $(".wind").text("Wind Speed (m/s): " + responseWeather.wind.speed);
+            $(".description").text("Weather description: " + responseWeather.weather[0].description);
 
             // Convert the temp to fahrenheit
-            var tempF = (response.main.temp - 273.15) * 1.8 + 32;
-            var feelsF = (response.main.feels_like - 273.15) * 1.8 + 32;
-            // add temp content to html
+            var tempF = (responseWeather.main.temp - 273.15) * 1.8 + 32;
+            var feelsF = (responseWeather.main.feels_like - 273.15) * 1.8 + 32;
+            // add temp content
             $(".tempF").text("Temperature (F) " + tempF.toFixed(2));
             $(".feelsLike").text("Feels like: " + feelsF.toFixed(2));
-
-            // Log the data in the console as well
-            console.log("Wind Speed: " + response.wind.speed);
 
             console.log("Temperature (F): " + tempF);
           });
