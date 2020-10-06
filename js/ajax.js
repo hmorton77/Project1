@@ -9,6 +9,7 @@ var lat;
 var lon;
 
 $.ajax({
+  //ZIPCODE TO LAT/LNG
   url: queryURL1,
   method: "GET",
   async: false,
@@ -22,25 +23,28 @@ $.ajax({
     console.log(lat);
     console.log(lon);
 
-    var restaurantName = localStorage.getItem("restaurantName");
-    var cuisine = localStorage.getItem("cuisine");
-    var carryout = localStorage.getItem("carryout");
-    queryURL2 =
-      "https://developers.zomato.com/api/v2.1/search?q=" + restaurantName + "&count=15&lat=" + lat + "&lon=" + lon + "&radius=24140.2&cuisine=" + cuisine;
-    if (restaurantName == true || cuisine == true) {
-      queryURL2 =
-        "https://developers.zomato.com/api/v2.1/search?q=" + restaurantName + "&count=15&lat=" + lat + "&lon=" + lon + "&radius=24140.2&cuisine=" + cuisine;
-    } else if (restaurantName == true || cuisine == false) {
-      queryURL2 = "https://developers.zomato.com/api/v2.1/search?q=" + restaurantName + "&count=15&lat=" + lat + "&lon=" + lon + "&radius=24140.2";
-    } else if (restaurantName == false || cuisine == true) {
-      queryURL2 = "https://developers.zomato.com/api/v2.1/search?count=15&lat=" + lat + "&lon=" + lon + "&radius=24140.2&cuisine=" + cuisine;
+    function URLgen() {
+      var restaurantName = localStorage.getItem("restaurantName");
+      var cuisine = localStorage.getItem("cuisine");
+      var carryout = localStorage.getItem("carryout");
+      queryURL2 = "https://developers.zomato.com/api/v2.1/search?";
+
+      if (restaurantName) {
+        queryURL2 += "q=" + restaurantName + "&";
+      }
+      queryURL2 += "count=15&lat=" + lat + "&lon=" + lon + "&radius=24140.2";
+      if (cuisine) {
+        queryURL2 += "&cuisine=" + cuisine;
+      }
+      if (carryout === "true") {
+        queryURL2 += "&category=Takeaway";
+      }
     }
+    URLgen();
     console.log(queryURL2);
-    if (carryout == true) {
-      queryURL = queryURL + "&category=Takeaway";
-    }
   })
   .then(function () {
+    //FOOD FUNCTIONS
     $.ajax({
       url: queryURL2,
       method: "GET",
@@ -59,19 +63,12 @@ $.ajax({
 
         // for loop to append each element into an array
         for (var i = 0; i < responseZomato.restaurants.length; i++) {
-          console.log(responseZomato);
-          console.log(responseZomato.restaurants[7].restaurant.name);
           restName = responseZomato.restaurants[i].restaurant.name;
           latVal = responseZomato.restaurants[i].restaurant.location.latitude;
           longVal = responseZomato.restaurants[i].restaurant.location.longitude;
           var specific = [];
-          // console.log(restName)
-          // console.log(latVal)
-          // console.log(longVal)
           specific.push(restName, latVal, longVal, parseInt(i) + 1);
           restaurantLoc.push(specific);
-          console.log(specific);
-          console.log(restaurantLoc);
         }
         console.log(restaurantLoc);
 
@@ -84,6 +81,7 @@ $.ajax({
         }
       })
       .then(function () {
+        //WEATHER STUFF FROM HERE ON
         var APIKey = "6cfffd42b643f9cd29fe45722d8c7849";
 
         // Here we are building the URL we need to query the database

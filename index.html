@@ -24,15 +24,15 @@
       <div class="row">
         <form class="col-sm-3 searchForm">
           <div class="form-group">
-            <label for="exampleFormControlInput1"><mark>Restaurant Name (don't type spaces! See example)</mark></label>
+            <label for="exampleFormControlInput1"><mark>Restaurant Name (no spaces! See example)</mark></label>
             <input type="Name" class="form-control" id="restaurantName" placeholder="Olivegarden" />
           </div>
           <div class="form-group">
-            <label for="exampleFormControlInput1"><mark>Restaurant Type (don't type spaces! See example)</mark></label>
+            <label for="exampleFormControlInput1"><mark>Restaurant Type (no spaces!)</mark></label>
             <input type="Cuisine" class="form-control" id="cuisine" placeholder="Italian" />
           </div>
           <div class="form-group">
-            <label for="exampleFormControlInput1"><mark>zipcode/area you are looking for</mark></label>
+            <label for="exampleFormControlInput1"><mark>zipcode you are looking for (REQUIRED)</mark></label>
             <input type="zipcode" class="form-control" id="zipcode" placeholder="44129" />
           </div>
           <div class="form-check">
@@ -41,14 +41,15 @@
               <mark>Carryout</mark>
             </label>
           </div>
-
           <input class="btn btn-primary submitBtn" type="submit" value="Submit" />
+          <button type="button" class="btn btn-warning resetBtn">Reset</button>
         </form>
+
         <!-- card for the weather api -->
         <!-- current temperature -->
-        <!-- current rain/snow? -->
+        <!-- current temp feels like? -->
+        <!-- description of weather -->
         <!-- windy? -->
-        <!-- please don't judge us for the empty div -->
         <div class="col-md-6"></div>
         <div class="card col-sm-3 weatherForm">
           <div class="card-header city">Weather</div>
@@ -63,19 +64,6 @@
 
       <!-- container for the map -->
       <div id="map"></div>
-      <!---
-      <iframe
-        id="map"
-        class="map"
-        width="1200"
-        height="450"
-        frameborder="0"
-        style="border: 0"
-        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCxsfk5uokgV_Uu1XpzgMO3OAGaElsVqOw&q=Cleveland+OH"
-        allowfullscreen
-      >
-      </iframe>
-    --></div>
   </body>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -86,9 +74,4 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxsfk5uokgV_Uu1XpzgMO3OAGaElsVqOw&callback=initMap" type="text/javascript"></script>
 
   <script type="text/javascript" src="./js/ajax.js"></script>
-  <script type="text/javascript">
-    // $(".submitBtn").click(function(){
-    //         alert("success!");
-    // });
-  </script>
 </html>
