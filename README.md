@@ -28,4 +28,4 @@ Markers will pop up on the map in regards to the restaurants being searched, to 
 
 To reset the app, click the reset button and re-enter the data.
 
-![pre-generated image](./Images/screenshot1.jpg)
+![pre-generated image](./Images/Screenshot1.jpg)
