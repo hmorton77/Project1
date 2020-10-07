@@ -61,14 +61,16 @@ $.ajax({
         var restName;
         var latVal;
         var longVal;
+        var address;
 
         // for loop to append each element into an array
         for (var i = 0; i < responseZomato.restaurants.length; i++) {
           restName = responseZomato.restaurants[i].restaurant.name;
           latVal = responseZomato.restaurants[i].restaurant.location.latitude;
           longVal = responseZomato.restaurants[i].restaurant.location.longitude;
+          address = responseZomato.restaurants[i].restaurant.location.address;
           var specific = [];
-          specific.push(restName, latVal, longVal, parseInt(i) + 1);
+          specific.push(restName, latVal, longVal, address, parseInt(i) + 1);
           restaurantLoc.push(specific);
         }
         console.log(restaurantLoc);
@@ -80,7 +82,7 @@ $.ajax({
             position: pos,
             map: map,
           });
-          let windowContent = restaurantLoc[i][0] + ": " + restaurantLoc[i][1] + ", " + restaurantLoc[i][2];
+          let windowContent = restaurantLoc[i][0] + ": " + restaurantLoc[i][3];
           let infoWindow = new google.maps.InfoWindow({
             content: windowContent,
           });
