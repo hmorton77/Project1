@@ -53,9 +53,6 @@ $.ajax({
       async: false,
     })
       .then(function (responseZomato) {
-        console.log(responseZomato);
-        console.log(responseZomato.restaurants);
-
         // array to put all the restaurant results
         var restaurantLoc = [];
         var restName;
@@ -73,7 +70,7 @@ $.ajax({
           specific.push(restName, latVal, longVal, address, parseInt(i) + 1);
           restaurantLoc.push(specific);
         }
-        console.log(restaurantLoc);
+
         // for each array, create a marker with the coordinates of the lat/lng values
 
         for (let i = 0; i < restaurantLoc.length; i++) {
@@ -88,7 +85,6 @@ $.ajax({
           });
           // each marker will have the respective windowContent in each box
           marker.addListener("click", () => {
-            console.log(marker.position.lat());
             infoWindow.open(map, marker);
           });
         }
@@ -97,10 +93,8 @@ $.ajax({
         //WEATHER STUFF FROM HERE ON
         var APIKey = "6cfffd42b643f9cd29fe45722d8c7849";
 
-        // Here we are building the URL we need to query the database
         var queryURL3 = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey;
 
-        // Here we run our AJAX call to the OpenWeatherMap API
         $.ajax({
           url: queryURL3,
           method: "GET",
@@ -108,25 +102,17 @@ $.ajax({
         })
           // We store all of the retrieved data inside of an object called "response"
           .then(function (responseWeather) {
-            // Log the queryURL
-            console.log(queryURL3);
-
-            // Log the resulting object
-            console.log(responseWeather);
-
             // Transfer content to HTML
             $(".city").html("<h1>" + responseWeather.name + " Weather Details &#127777;</h1>");
             $(".wind").text("Wind Speed (m/s): " + responseWeather.wind.speed);
             $(".description").text("Weather description: " + responseWeather.weather[0].description);
 
-            // Convert the temp to fahrenheit
+            // Convert the temperature to fahrenheit
             var tempF = (responseWeather.main.temp - 273.15) * 1.8 + 32;
             var feelsF = (responseWeather.main.feels_like - 273.15) * 1.8 + 32;
-            // add temp content
+            // add temp content to html
             $(".tempF").text("Temperature (F) " + tempF.toFixed(2));
             $(".feelsLike").text("Feels like: " + feelsF.toFixed(2));
-
-            console.log("Temperature (F): " + tempF);
           });
       });
   });

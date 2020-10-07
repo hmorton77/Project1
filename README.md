@@ -1,6 +1,6 @@
 # Project1
 
-Group 9 project 1
+Group 9 project 1: **Fine-ding Dining**
 
 _Server side API's used:_
 
@@ -27,3 +27,5 @@ Information for the weather will pop up for the area in question.
 Markers will pop up on the map in regards to the restaurants being searched, to a maximum of 15 results.
 
 To reset the app, click the reset button and re-enter the data.
+
+![pre-generated image](./Images/screenshot1.jpg)
