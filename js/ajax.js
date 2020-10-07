@@ -84,7 +84,7 @@ $.ajax({
           let infoWindow = new google.maps.InfoWindow({
             content: windowContent,
           });
-
+          // each marker will have the respective windowContent in each box
           marker.addListener("click", () => {
             console.log(marker.position.lat());
             infoWindow.open(map, marker);
