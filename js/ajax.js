@@ -3,7 +3,7 @@
 // pulls zipcode from localstorage
 var zipcode = localStorage.getItem("zipcode").trim();
 
-var queryURL1 = "https://maps.googleapis.com/maps/api/geocode/json?address=" + zipcode + "&key=AIzaSyCxsfk5uokgV_Uu1XpzgMO3OAGaElsVqOw";
+var queryURL1 = "https://maps.googleapis.com/maps/api/geocode/json?address=" + zipcode + "&key=" + googleAPI;
 var queryURL2;
 var lat;
 var lon;
@@ -49,7 +49,7 @@ $.ajax({
     $.ajax({
       url: queryURL2,
       method: "GET",
-      headers: { "user-key": "19a26be38c8982385cd3ead26085c343" },
+      headers: { "user-key": zomatoAPI },
       async: false,
     })
       .then(function (responseZomato) {
@@ -91,9 +91,7 @@ $.ajax({
       })
       .then(function () {
         //WEATHER STUFF FROM HERE ON
-        var APIKey = "6cfffd42b643f9cd29fe45722d8c7849";
-
-        var queryURL3 = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + APIKey;
+        var queryURL3 = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=" + weatherAPI;
 
         $.ajax({
           url: queryURL3,
